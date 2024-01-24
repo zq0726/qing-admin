@@ -1,14 +1,19 @@
-import './assets/main.css'
-
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+import { setupRouter } from './router'
+import { setupStore } from './stores'
 
 import App from './App.vue'
-import router from './router'
 
-const app = createApp(App)
+async function bootstrap() {
+  const app = createApp(App)
 
-app.use(createPinia())
-app.use(router)
+  //全局状态管理
+  setupStore(app)
 
-app.mount('#app')
+  //路由管理
+  setupRouter(app)
+
+  app.mount('#app')
+}
+
+void bootstrap()

@@ -26,7 +26,9 @@ const test = () => {
     />
   </el-select>
 
-  <el-button type="primary" @click="test">测试</el-button>
+  <div class="p-4">
+    <el-button type="primary" @click="test">测试</el-button>
+  </div>
 </template>
 
 <style scoped lang="scss">

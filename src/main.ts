@@ -4,8 +4,8 @@ import { setupStore } from './stores'
 import { setupElementIcon } from './plugin/elementIcon'
 
 import './assets/reset.css'
-import './assets/element.scss'
 import 'dayjs/locale/zh-cn'
+import 'virtual:windi.css'
 
 import App from './App.vue'
 

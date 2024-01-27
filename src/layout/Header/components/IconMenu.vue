@@ -8,7 +8,7 @@
       </el-tooltip>
     </li>
     <li>
-      <el-tooltip class="box-item" effect="dark" content="搜索" placement="bottom">
+      <el-tooltip class="box-item" effect="dark" content="全屏" placement="bottom">
         <el-icon><FullScreen /></el-icon>
       </el-tooltip>
     </li>

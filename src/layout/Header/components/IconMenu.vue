@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useFullscreen } from '@vueuse/core'
+
+const { toggle, isFullscreen } = useFullscreen()
+</script>
 
 <template>
   <ul class="icon-list">
@@ -9,7 +13,25 @@
     </li>
     <li>
       <el-tooltip class="box-item" effect="dark" content="全屏" placement="bottom">
-        <el-icon><FullScreen /></el-icon>
+        <span @click="toggle">
+          <i v-if="isFullscreen" class="iconfont icon-daping-feiquanping"></i>
+          <i v-else class="iconfont icon-quanping"></i>
+        </span>
+      </el-tooltip>
+    </li>
+    <li>
+      <el-tooltip class="box-item" effect="dark" content="中英文" placement="bottom">
+        <i class="iconfont icon-a-zhongyingwenyingwen"></i>
+      </el-tooltip>
+    </li>
+    <li>
+      <el-tooltip class="box-item" effect="dark" content="消息" placement="bottom">
+        <i class="iconfont icon-xiaoxi"></i>
+      </el-tooltip>
+    </li>
+    <li>
+      <el-tooltip class="box-item" effect="dark" content="锁屏" placement="bottom">
+        <el-icon><Lock /></el-icon>
       </el-tooltip>
     </li>
     <li>

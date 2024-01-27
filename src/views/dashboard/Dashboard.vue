@@ -28,6 +28,7 @@ const test = () => {
 
   <div class="p-4">
     <el-button type="primary" @click="test">测试</el-button>
+    <i class="iconfont icon-languagefanyi"></i>
   </div>
 </template>
 

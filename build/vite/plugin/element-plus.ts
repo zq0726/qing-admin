@@ -5,10 +5,10 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 export const createElementPlus = () => {
   return [
     AutoImport({
-      resolvers: [ElementPlusResolver()]
+      resolvers: [ElementPlusResolver({ importStyle: 'sass' })]
     }),
     Components({
-      resolvers: [ElementPlusResolver()]
+      resolvers: [ElementPlusResolver({ importStyle: 'sass' })]
     })
   ]
 }

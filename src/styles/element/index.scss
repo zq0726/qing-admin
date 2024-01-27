@@ -1,0 +1,22 @@
+$base-padding: 14px;
+
+@forward 'element-plus/theme-chalk/src/common/var.scss' with (
+  $colors: (
+    'primary': (
+      'base': green,
+    ),
+  ),
+  $menu:(
+    'level-padding': $base-padding,
+    "base-level-padding": $base-padding,
+  ),
+  $main:(
+    "padding":$base-padding
+  ),
+  $header:(
+    "padding":0 $base-padding
+  ),
+  $footer:(
+    "padding":0 $base-padding
+  )
+);

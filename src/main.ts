@@ -1,6 +1,11 @@
 import { createApp } from 'vue'
 import { setupRouter } from './router'
 import { setupStore } from './stores'
+import { setupElementIcon } from './plugin/elementIcon'
+
+import './assets/reset.css'
+import './assets/element.scss'
+import 'dayjs/locale/zh-cn'
 
 import App from './App.vue'
 
@@ -9,6 +14,8 @@ async function bootstrap() {
 
   //全局状态管理
   setupStore(app)
+
+  setupElementIcon(app)
 
   //路由管理
   setupRouter(app)

@@ -21,7 +21,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
   const env = loadEnv(mode, root)
   const viteEnv = wrapperEnv(env)
 
-  const { VITE_PUBLIC_PATH, VITE_PORT, VITE_GLOB_PROD_MOCK, VITE_PROXY } = viteEnv
+  const { VITE_PUBLIC_PATH, VITE_PORT, VITE_GLOB_PROD_MOCK, VITE_PROXY, VITE_OPEN } = viteEnv
   const prodMock = VITE_GLOB_PROD_MOCK
   const isBuild = command === 'build'
 
@@ -39,7 +39,8 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     server: {
       host: true,
       port: VITE_PORT,
-      proxy: createProxy(VITE_PROXY)
+      proxy: createProxy(VITE_PROXY),
+      open: VITE_OPEN
     },
     build: {
       target: 'es2015',
@@ -47,6 +48,16 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       outDir: OUTPUT_DIR,
       reportCompressedSize: false,
       chunkSizeWarningLimit: 2000
+    },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `
+          @use "@/styles/element/index.scss" as *;
+          @use "@/styles/base.scss" as *;
+        `
+        }
+      }
     }
   }
 }

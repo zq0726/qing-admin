@@ -7,7 +7,11 @@
     "nightwatch.conf.*",
     "playwright.config.*",
     "types/**/*",
-    "build/**/*"
+    "build/**/*",
+    "auto-imports.d.ts"
+  ],
+  "exclude": [
+    ".stylelintrc.js"
   ],
   "compilerOptions": {
     "composite": true,

@@ -10,6 +10,8 @@ export interface MenuType {
 export interface DesignSettingStoreType {
   language: LanguageEnum
   comSize: SizeEnum
+  lockPassword: string
+  userInfo: any
   themeConfig: {
     isGrey: boolean
     isWeak: boolean

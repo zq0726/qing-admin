@@ -6,12 +6,15 @@ import ThemeSetting from './ThemeSetting.vue'
 import LockModal from './LockModal.vue'
 import Language from './Language.vue'
 import { storeToRefs } from 'pinia'
+import { useDialog } from '@/components/Dialog'
 
 const themeSetting = ref()
-const lockModal = ref()
 const { toggle, isFullscreen } = useFullscreen()
-const circleUrl = ref('https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png')
-const { themeConfig } = storeToRefs(useDesignSettingStore())
+const { userInfo } = storeToRefs(useDesignSettingStore())
+const [register, { openDialog }] = useDialog({
+  title: '锁屏页面',
+  showFooter: false
+})
 /**
  * 显示主题抽屉
  */
@@ -23,9 +26,8 @@ const showThemeDrawer = () => {
  * 显示锁屏modal
  */
 const showLockModal = () => {
+  openDialog()
 }
-
-
 </script>
 
 <template>
@@ -57,8 +59,22 @@ const showLockModal = () => {
       </el-tooltip>
     </li>
     <li class="avatar-box">
-      <el-avatar :size="40" :src="circleUrl" />
-      <span>name</span>
+      <el-dropdown>
+        <span class="el-dropdown-link">
+          <div class="base-info">
+            <el-avatar :size="40" :src="userInfo.avatar" />
+            <span>{{ userInfo.name }}</span>
+          </div>
+        </span>
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item>官网</el-dropdown-item>
+            <el-dropdown-item divided>账号设置</el-dropdown-item>
+            <el-dropdown-item>密码修改</el-dropdown-item>
+            <el-dropdown-item>退出系统</el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
     </li>
     <li @click="showThemeDrawer">
       <el-tooltip class="box-item" effect="dark" content="设置" placement="bottom">
@@ -68,7 +84,7 @@ const showLockModal = () => {
   </ul>
 
   <ThemeSetting ref="themeSetting" />
-  <LockModal ref="lockModal" />
+  <LockModal @register="register" />
 </template>
 
 <style scoped lang="scss">
@@ -92,7 +108,16 @@ const showLockModal = () => {
     }
   }
   .avatar-box {
-    padding: 0 5px;
+    display: flex;
+    .base-info {
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+      font-weight: bold;
+    }
   }
+}
+::v-deep .el-tooltip__trigger:focus-visible {
+  outline: none;
 }
 </style>

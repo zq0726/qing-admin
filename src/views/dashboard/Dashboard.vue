@@ -15,11 +15,12 @@ const changeSize = (info: SizeEnum) => {
 
 const changeDialogShow = (type: Boolean) => {
   if (type) openDialog()
-  else  closeDialog()
+  else closeDialog()
 }
 
-const [register, { openDialog ,closeDialog }] = useDialog({
-  title:'呵呵'
+const [register, { openDialog, closeDialog }] = useDialog({
+  title: '锁屏密码',
+  showFooter: false
 })
 </script>
 
@@ -33,15 +34,12 @@ const [register, { openDialog ,closeDialog }] = useDialog({
     />
   </el-select>
 
-  
-
   <div>{{ $t('home.welcome') }}</div>
-    <div>
-      <el-button type="success" @click="changeDialogShow(true)">打开</el-button>
-      <el-button type="primary"  @click="changeDialogShow(false)">关闭</el-button>
-    </div>
-  <UserDialog  @register="register"/>
-
+  <div>
+    <el-button type="success" @click="changeDialogShow(true)">打开</el-button>
+    <el-button type="primary" @click="changeDialogShow(false)">关闭</el-button>
+  </div>
+  <UserDialog @register="register" />
 </template>
 
 <style scoped lang="scss">

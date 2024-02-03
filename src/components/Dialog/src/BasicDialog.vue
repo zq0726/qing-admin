@@ -29,14 +29,13 @@ const openDialog = () => {
  * 设置props
  */
 const setProps = (props: any) => {
-  settingProps.value ={...props,...unref(settingProps)}
+  settingProps.value = { ...props, ...unref(settingProps) }
 }
-
 
 const modalMethods: DialogMethods = {
   setProps,
   openDialog,
-  closeDialog,
+  closeDialog
 }
 
 const instance = getCurrentInstance()
@@ -44,7 +43,7 @@ if (instance) {
   emit('register', modalMethods)
 }
 
-const getBindValues:any = computed(() => {
+const getBindValues: any = computed(() => {
   return {
     ...props,
     ...attrs,
@@ -85,10 +84,10 @@ const submit = () => {
     <span>
       <slot />
     </span>
-    <template #footer>
+    <template #footer v-if="getBindValues.showFooter">
       <div class="dialog-footer">
         <el-button @click="closeDialog">取消</el-button>
-        <el-button type="primary" @click="submit()"> {{ baseProps.subBtuText.default }} </el-button>
+        <el-button type="primary" @click="submit()"> {{ getBindValues.subBtuText }} </el-button>
       </div>
     </template>
   </el-dialog>
@@ -101,7 +100,7 @@ const submit = () => {
   align-items: center;
   width: 100%;
   height: 100%;
-  h4{
+  h4 {
     display: flex;
     align-items: center;
     height: 100%;
@@ -110,7 +109,7 @@ const submit = () => {
   .header-action {
     display: flex;
     align-items: center;
-   height: 100%;
+    height: 100%;
     &-btn {
       display: flex;
       justify-content: center;

@@ -12,6 +12,12 @@ export const useDesignSettingStore = defineStore(
     const state = reactive<DesignSettingStoreType>({
       language,
       comSize,
+      userInfo: {
+        name: '小王',
+        avatar:
+          'https://img1.baidu.com/it/u=3320246382,1478944219&fm=253&fmt=auto&app=138&f=JPEG?w=505&h=500'
+      },
+      lockPassword: '123456',
       themeConfig,
       themeColor
     })

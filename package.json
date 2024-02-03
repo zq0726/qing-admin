@@ -2,6 +2,11 @@
   "name": "qing-admin",
   "version": "0.0.0",
   "private": true,
+  "author": {
+    "name": "zq",
+    "email": "805322803@qq.com",
+    "url": "https://github.com/zq0726/qing-admin"
+  },
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
@@ -73,5 +78,24 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  }
+  },
+  "keywords": [
+    "vue",
+    "element-plus",
+    "vue3",
+    "ts",
+    "tsx",
+    "admin",
+    "typescript",
+    "axios"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zq0726/qing-admin"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zq0726/qing-admin/issues"
+  },
+  "homepage": "https://github.com/zq0726/qing-admin"
 }

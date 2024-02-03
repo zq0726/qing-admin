@@ -13,5 +13,9 @@ export const baseProps = {
   title: {
     type: String,
     default: ''
+  },
+  showFooter: {
+    type: Boolean,
+    default: true
   }
 }

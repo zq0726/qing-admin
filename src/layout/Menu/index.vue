@@ -1,50 +1,36 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { useDesignSettingStore } from '@/stores/modules/designSetting'
 import { storeToRefs } from 'pinia'
+import { uiConfig } from '@/settings/constant'
+import { useMenuStore } from '@/stores/modules/menu'
+// import { useRoute } from 'vue-router'
 import Logo from './components/Logo.vue'
 import SubItem from './components/SubItem.vue'
-import { uiConfig } from '@/settings/constant'
 
 const { themeConfig, themeColor } = storeToRefs(useDesignSettingStore())
-
-const menuList = [
-  {
-    title: '測試',
-    path: '/404',
-    icon: 'Edit'
-  },
-  {
-    title: '检查',
-    path: '/403',
-    icon: 'Edit',
-    children: [
-      {
-        title: 'hello',
-        path: '/404',
-        icon: 'Edit'
-      }
-    ]
-  }
-]
+const { menuList, defalutActive, defaultOpeneds } = storeToRefs(useMenuStore())
 </script>
 
 <template>
   <div
     class="menu"
     :style="{
-      width: themeConfig.isCollapse ? uiConfig.menuCollapseWidth : uiConfig.menuWidth
+      width: themeConfig.isCollapse ? uiConfig.menuCollapseWidth : themeConfig.menuWidth + 'px'
     }"
   >
     <Logo />
     <el-scrollbar>
       <el-menu
+        :default-active="defalutActive"
+        :default-openeds="defaultOpeneds"
         :router="true"
         :collapse-transition="false"
         :unique-opened="true"
-        active-text-color="#fff"
         text-color="#fff"
         :collapse="themeConfig.isCollapse"
         :background-color="themeColor.asideColor"
+        active-text-color="#fff"
       >
         <SubItem :menuList="menuList" />
       </el-menu>

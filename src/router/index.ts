@@ -12,8 +12,6 @@ const routeModuleList: RouteRecordRaw[] = Object.keys(modules).reduce((list, key
   return [...list, ...modList]
 }, [] as RouteRecordRaw[])
 
-console.log('routeModuleList', routeModuleList)
-
 const routes: RouteRecordRaw[] = [
   ...routeModuleList,
   {

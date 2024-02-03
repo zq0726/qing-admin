@@ -1,7 +1,5 @@
 <script setup lang="ts">
-const props = defineProps(['menuList'])
-
-console.log('props', props)
+defineProps(['menuList'])
 </script>
 
 <template>
@@ -25,4 +23,20 @@ console.log('props', props)
   </template>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.el-menu-item {
+  &.is-active {
+    position: relative;
+    background-color: var(--el-color-primary) !important;
+    &::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 4px;
+      background-color: var(--el-color-danger);
+      content: '';
+    }
+  }
+}
+</style>

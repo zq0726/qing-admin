@@ -1,0 +1,28 @@
+.el-drawer__header {
+  margin-bottom: 0 !important;
+  padding-bottom: $base-padding !important;
+  border-bottom: 1px solid var(--el-border-color);
+  .el-drawer__title {
+    font-weight: 500;
+    color: black;
+  }
+}
+.el-dialog__header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 0 !important;
+  padding: 0 15px !important;
+  height: 50px;
+  border-bottom: 1px solid var(--el-border-color);
+}
+.el-dialog__headerbtn {
+  top: 0 !important;
+}
+.el-dialog__footer {
+  padding: 10px $base-padding !important;
+  border-top: 1px solid var(--el-border-color);
+}
+.el-dialog__body {
+  padding: $base-padding !important;
+}

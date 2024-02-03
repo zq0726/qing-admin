@@ -14,6 +14,7 @@ module.exports = {
         'font-family-no-missing-generic-family-keyword': null,
         'property-no-unknown': null,
         'no-empty-source': null,
+        "selector-class-pattern": "^[a-zA-Z0-9-_]+$",
         'selector-pseudo-class-no-unknown': [
             true,
             {

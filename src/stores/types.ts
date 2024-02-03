@@ -1,5 +1,11 @@
 import type { SizeEnum, LanguageEnum } from '@/enums/config'
-import type Color from 'element-plus/lib/components/color-picker/src/utils/color.js'
+
+export interface MenuType {
+  title: string
+  icon?: string
+  path: string
+  children?: MenuType[]
+}
 
 export interface DesignSettingStoreType {
   language: LanguageEnum
@@ -7,13 +13,29 @@ export interface DesignSettingStoreType {
   themeConfig: {
     isGrey: boolean
     isWeak: boolean
+    isLock: boolean
+    isCollapse: boolean
+    isDark: boolean
     showBreadcrumb: boolean
     showTabs: boolean
     showFooter: boolean
-    isCollapse: boolean
+    menuWidth: number
   }
   themeColor: {
+    primaryColor: string
     asideColor: string
     headerColor: string
   }
+}
+
+export interface MenuStoreType {
+  menuList: MenuType[]
+  breadcrumbList: any
+  defalutActive: string
+  defaultOpeneds: string[]
+}
+
+export interface TabStoreType {
+  activeTab: string
+  tabsMenuList: MenuType[]
 }

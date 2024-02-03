@@ -7,7 +7,7 @@ const { changeCollapse } = useDesignSettingStore()
 </script>
 
 <template>
-  <div class="icon-box">
+  <div class="icon-box flex-y-center">
     <el-icon class="collapse-icon" @click="changeCollapse()">
       <component :is="themeConfig.isCollapse ? 'expand' : 'fold'"></component>
     </el-icon>
@@ -16,7 +16,10 @@ const { changeCollapse } = useDesignSettingStore()
 
 <style scoped lang="scss">
 .icon-box {
-  margin-right: $global-padding;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
   height: 100%;
 }
 </style>

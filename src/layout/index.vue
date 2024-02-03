@@ -1,28 +1,36 @@
 <script setup lang="ts">
 import { uiConfig } from '@/settings/constant'
+import { useDesignSettingStore } from '@/stores/modules/designSetting'
+import { storeToRefs } from 'pinia'
+import LockScreen from './LockScreen/LockScreen.vue'
+
 import Aside from './Menu/index.vue'
 import Header from './Header/index.vue'
 import Footer from './Footer/index.vue'
-
-import { useDesignSettingStore } from '@/stores/modules/designSetting'
-import { storeToRefs } from 'pinia'
-
+import Tabs from './Tabs/index.vue'
 const { themeColor, themeConfig } = storeToRefs(useDesignSettingStore())
 </script>
 
 <template>
   <div class="layout">
     <el-container>
-      <el-aside class="hidden-xs-only layout-aside" :style="{ background: themeColor.asideColor }">
+      <el-aside
+        class="hidden-xs-only layout-aside"
+        :style="{ background: themeConfig.isDark ? '#000' : themeColor.asideColor }"
+      >
         <Aside />
       </el-aside>
       <el-container>
         <el-header
           class="layout-header"
-          :style="{ height: uiConfig.headerHeight, background: themeColor.headerColor }"
+          :style="{
+            background: themeConfig.isDark ? '#000' : themeColor.headerColor
+          }"
         >
           <Header />
+          <Tabs v-if="themeConfig.showTabs" />
         </el-header>
+
         <el-main>
           <router-view />
         </el-main>
@@ -35,6 +43,10 @@ const { themeColor, themeConfig } = storeToRefs(useDesignSettingStore())
         </el-footer>
       </el-container>
     </el-container>
+
+    <el-backtop :right="100" :bottom="100" />
+
+    <LockScreen v-if="themeConfig.isLock" />
   </div>
 </template>
 
@@ -47,6 +59,8 @@ const { themeColor, themeConfig } = storeToRefs(useDesignSettingStore())
     width: auto;
   }
   &-header {
+    padding: 0;
+    height: auto;
     border-bottom: 1px solid var(--el-border-color);
   }
   &-footer {

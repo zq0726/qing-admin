@@ -3,7 +3,7 @@ $base-padding: 14px;
 @forward 'element-plus/theme-chalk/src/common/var.scss' with (
   $colors: (
     'primary': (
-      'base': green,
+      'base': #409EFf,
     ),
   ),
   $menu:(
@@ -18,5 +18,8 @@ $base-padding: 14px;
   ),
   $footer:(
     "padding":0 $base-padding
+  ),
+  $drawer:(
+    "padding-primary":14px
   )
 );

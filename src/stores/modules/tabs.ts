@@ -59,6 +59,8 @@ export const useTabStore = defineStore(
     const addTab = (menu: MenuType) => {
       const tabExist = hasTab(menu)
 
+      console.log('tabExist', tabExist)
+
       if (tabExist) return
       else state.tabsMenuList.push(menu)
     }
@@ -68,7 +70,6 @@ export const useTabStore = defineStore(
      * @returns
      */
     const activeTabIndex = (): number => {
-      console.log('tabsMenuList', state.tabsMenuList)
       return state.tabsMenuList.findIndex((item) => item.path === state.activeTab)
     }
 
@@ -107,7 +108,6 @@ export const useTabStore = defineStore(
      * 关闭其他 tab
      */
     const closeOrther = () => {
-      console.log('111', state.tabsMenuList)
       state.tabsMenuList = state.tabsMenuList.filter(
         (item) => item.path === '/' || item.path === state.activeTab
       )

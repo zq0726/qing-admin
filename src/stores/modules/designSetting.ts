@@ -42,6 +42,12 @@ export const useDesignSettingStore = defineStore(
     const changeShowBreadcrumb = () => {
       state.themeConfig.showBreadcrumb = !state.themeConfig.showBreadcrumb
     }
+
+    // 设置theme 的属性
+    const setThemeConfig = (type: any, val: any) => {
+      //@ts-ignore
+      state.themeConfig[type] = val
+    }
     // 改变footer 的显示情况
     const changeShowFooter = () => {
       state.themeConfig.showFooter = !state.themeConfig.showFooter
@@ -59,7 +65,8 @@ export const useDesignSettingStore = defineStore(
       changeCollapse,
       changeShowBreadcrumb,
       changeShowFooter,
-      changePrimaryColor
+      changePrimaryColor,
+      setThemeConfig
     }
   },
   {

@@ -40,6 +40,8 @@ const backSystem = () => {
   if (lockPwd.value === lockPassword.value) {
     showUnlock.value = false
     themeConfig.value.isLock = false
+  } else {
+    ElMessage.error('锁屏密码错误')
   }
 }
 

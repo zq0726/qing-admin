@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { useDesignSettingStore } from '@/stores/modules/designSetting'
 import { storeToRefs } from 'pinia'
 import { uiConfig } from '@/settings/constant'
 import { useMenuStore } from '@/stores/modules/menu'
-// import { useRoute } from 'vue-router'
 import Logo from './components/Logo.vue'
 import SubItem from './components/SubItem.vue'
 

@@ -1,0 +1,5 @@
+export { default as BaseForm } from './src/BaseForm.vue'
+export { default as Input } from './src/components/Input.vue'
+export { default as CheckBox } from './src/components/Checkbox.vue'
+export { default as Select } from './src/components/Select.vue'
+export { default as InputNumber } from './src/components/InputNumber.vue'

@@ -26,6 +26,16 @@ export const useMenuStore = defineStore(
               title: '角色',
               path: '/system/role',
               icon: 'Edit'
+            },
+            {
+              title: '部门',
+              path: '/system/department',
+              icon: 'Edit'
+            },
+            {
+              title: '菜单',
+              path: '/system/menu',
+              icon: 'Edit'
             }
           ]
         }

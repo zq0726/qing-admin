@@ -17,8 +17,6 @@ const { themeConfig } = storeToRefs(useDesignSettingStore())
       <IconMenu />
     </div>
   </div>
-
-
 </template>
 
 <style scoped lang="scss">

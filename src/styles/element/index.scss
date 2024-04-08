@@ -1,25 +1,28 @@
-$base-padding: 14px;
+$base-padding: 10px;
 
 @forward 'element-plus/theme-chalk/src/common/var.scss' with (
   $colors: (
     'primary': (
-      'base': #409EFf,
-    ),
+      'base': #409eff
+    )
   ),
-  $menu:(
+  $menu: (
     'level-padding': $base-padding,
-    "base-level-padding": $base-padding,
+    'base-level-padding': $base-padding
   ),
-  $main:(
-    "padding":$base-padding
+  $main: (
+    'padding': $base-padding
   ),
-  $header:(
-    "padding":0 $base-padding
+  $header: (
+    'padding': 0 $base-padding
   ),
-  $footer:(
-    "padding":0 $base-padding
+  $footer: (
+    'padding': 0 $base-padding
   ),
-  $drawer:(
-    "padding-primary":14px
+  $drawer: (
+    'padding-primary': 14px
+  ),
+  $card: (
+    'padding': 10px
   )
 );

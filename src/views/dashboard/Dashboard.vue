@@ -3,8 +3,6 @@ import { ref } from 'vue'
 import { useDesignSettingStore } from '@/stores/modules/designSetting'
 import { comSizeConfig } from '@/settings/constant'
 import { SizeEnum } from '@/enums/config'
-import UserDialog from './components/UserDialog.vue'
-import { useDialog } from '@/components/Dialog'
 
 const { setSize } = useDesignSettingStore()
 
@@ -13,15 +11,14 @@ const changeSize = (info: SizeEnum) => {
   setSize(info)
 }
 
-const changeDialogShow = (type: Boolean) => {
-  if (type) openDialog()
-  else closeDialog()
+const info = ref('')
+
+const vFocus = {
+  mounted: (el: HTMLElement) => el.focus()
 }
 
-const [register, { openDialog, closeDialog }] = useDialog({
-  title: '锁屏密码',
-  showFooter: false
-})
+const show = ref(false)
+const test = ref<HTMLElement | null>(null)
 </script>
 
 <template>
@@ -35,11 +32,12 @@ const [register, { openDialog, closeDialog }] = useDialog({
   </el-select>
 
   <div>{{ $t('home.welcome') }}</div>
-  <div>
-    <el-button type="success" @click="changeDialogShow(true)">打开</el-button>
-    <el-button type="primary" @click="changeDialogShow(false)">关闭</el-button>
-  </div>
-  <UserDialog @register="register" />
+  <el-input v-model="info" v-focus></el-input>
+
+  <button @click="show = !show" ref="test">Toggle</button>
+  <Transition>
+    <p v-if="show">hello</p>
+  </Transition>
 </template>
 
 <style scoped lang="scss">
@@ -47,5 +45,15 @@ const [register, { openDialog, closeDialog }] = useDialog({
 .iconfont {
   width: 20px;
   font-size: 20px;
+}
+
+/* 下面我们会解释这些 class 是做什么的 */
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 </style>

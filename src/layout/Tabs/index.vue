@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import { watch } from 'vue'
+import { watch, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { useMenuStore } from '@/stores/modules/menu'
 import { useTabStore } from '@/stores/modules/tabs'
 import { useRouter } from 'vue-router'
-import { inject } from 'vue'
+import emitter from '@/plugin/mitt'
 
 import type { MenuType } from '@/stores/types'
 import type { TabsPaneContext } from 'element-plus'
-import type { Fn } from '@vueuse/core'
 import type { TabPaneName } from 'element-plus/lib/components/tabs/src/tabs.js'
 
 const { menuList, breadcrumbList, defalutActive, defaultOpeneds } = storeToRefs(useMenuStore())
@@ -18,7 +17,8 @@ const { tabsMenuList, activeTab, canCloseLeft, canCloseRight, canCloseOrther, ca
 const { addTab, removeTab, closeLeft, closeRight, closeOrther, closeAll } = useTabStore()
 const route = useRoute()
 const router = useRouter()
-const reload: Fn | undefined = inject('reload')
+
+const rotation = ref(0)
 
 //改变 tab 页面
 const tabClick = (tab: TabsPaneContext) => {
@@ -29,26 +29,6 @@ const tabClick = (tab: TabsPaneContext) => {
 const deleteTab = (targetName: TabPaneName | undefined) => {
   if (targetName) removeTab(targetName as string)
 }
-
-watch(
-  () => route.path,
-  async (newV) => {
-    const currentMneu: MenuType | null = getActiveMenu(menuList.value, newV)
-    breadcrumbList.value = route.matched.filter((item) => item.path !== '/')
-    activeTab.value = route.path
-
-    if (currentMneu != null) addTab(currentMneu)
-    defalutActive.value = newV
-
-    const openMenu = []
-    for (let item of route.matched) {
-      if (item.path != newV) {
-        openMenu.push(item.path)
-      }
-    }
-    defaultOpeneds.value = openMenu
-  }
-)
 
 const getActiveMenu = (info: any[], chosePath: string) => {
   let activeMenu = null
@@ -67,12 +47,32 @@ const getActiveMenu = (info: any[], chosePath: string) => {
   return activeMenu
 }
 
+watch(
+  () => route.path,
+  (newV) => {
+    const currentMneu: MenuType | null = getActiveMenu(menuList.value, newV)
+    breadcrumbList.value = route.matched.filter((item) => item.path !== '/')
+    activeTab.value = route.path
+
+    if (currentMneu != null) addTab(currentMneu)
+    defalutActive.value = newV
+    const openMenu = []
+    for (let item of route.matched) {
+      if (item.path != newV) {
+        openMenu.push(item.path)
+      }
+    }
+    defaultOpeneds.value = openMenu
+  },
+  {
+    immediate: true
+  }
+)
+
 //刷新页面
 const reloadPage = () => {
-  console.log('hel')
-  if (reload) {
-    reload()
-  }
+  rotation.value += 360
+  emitter.emit('reload')
 }
 </script>
 
@@ -103,14 +103,23 @@ const reloadPage = () => {
       </el-tabs>
     </div>
     <div class="tabs-operation">
-      <el-icon><More /></el-icon>
-      <el-tooltip class="box-item" effect="dark" content="刷新" placement="top-start">
-        <el-icon @click="reloadPage"><Refresh /></el-icon>
+      <div class="box-item">
+        <el-icon><More /></el-icon>
+      </div>
+      <el-tooltip effect="dark" content="刷新" placement="top-start">
+        <div class="box-item">
+          <el-icon
+            @click="reloadPage"
+            class="refresh-box"
+            :style="{ transform: `rotate(${rotation}deg)` }"
+            ><Refresh
+          /></el-icon>
+        </div>
       </el-tooltip>
       <el-dropdown>
-        <span class="el-dropdown-link">
+        <div class="box-item">
           <el-icon><ArrowDownBold /></el-icon>
-        </span>
+        </div>
         <template #dropdown>
           <el-dropdown-menu>
             <el-dropdown-item @click="removeTab(route.path)" :disabled="activeTab == '/'">
@@ -148,6 +157,7 @@ const reloadPage = () => {
   display: flex;
   justify-content: space-between;
   .tabs-menu {
+    overflow: hidden;
     padding: 5px 0;
     padding-left: $global-padding;
     flex: 1;
@@ -159,17 +169,29 @@ const reloadPage = () => {
     display: flex;
     align-items: center;
     border-left: 1px solid var(--el-border-color);
-    i {
+    flex-shrink: 0;
+    :deep(.el-dropdown) {
+      height: 100%;
+      outline: none;
+    }
+    .box-item {
+      display: flex;
+      align-items: center;
       width: 40px;
       height: 100%;
       border-right: 1px solid var(--el-border-color);
-      cursor: pointer;
-      outline: none;
-    }
-    span:focus-visible {
-      outline: none;
+      outline: none !important;
+      i {
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        outline: none !important;
+      }
     }
   }
+}
+.refresh-box {
+  transition: transform 1s ease; /* 平滑过渡效果 */
 }
 :deep(.el-tabs__header) {
   margin: 0;

@@ -7,6 +7,9 @@
     color: black;
   }
 }
+.el-drawer__footer {
+  border-top: 1px solid var(--el-border-color);
+}
 .el-dialog__header {
   position: relative;
   display: flex;

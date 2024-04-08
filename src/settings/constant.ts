@@ -1,5 +1,9 @@
 import { LanguageEnum } from '@/enums/config'
 
+// 缓存默认过期时间
+// export const DEFAULT_CACHE_TIME = 1000 * 60 * 60 * 24 * 7
+export const DEFAULT_CACHE_TIME = 1000 * 60 * 1
+
 /**
  * 语言类型
  */
@@ -13,6 +17,13 @@ export const languageConfig: Universal<LanguageEnum>[] = [
     value: LanguageEnum.EN
   }
 ]
+
+export const paginationConfig = {
+  total: 0,
+  currentPage: 1,
+  pageSize: 10,
+  pageSizes: [10, 20, 30, 40, 50, 100]
+}
 
 /**
  * 组件大小

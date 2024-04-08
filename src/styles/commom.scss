@@ -1,30 +1,35 @@
 .flex-y-c {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 .flex-x-c {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+.flex-c {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* 滚动条 */
 // 定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸
 ::-webkit-scrollbar {
-    width: 8px;
-  
-    /* 滚动条宽度 */
-    height: 8px;
-  
-    /* 滚动条高度 */
-    background-color: white;
-  }
-  
-  // 定义滑块 内阴影+圆角
-  ::-webkit-scrollbar-thumb {
-    /* 滚动条的背景颜色 */
-    border-radius: 20px;
-    background-color: #dddee0;
-    box-shadow: inset 0 0 0 white;
-  }
+  width: 8px;
+
+  /* 滚动条宽度 */
+  height: 8px;
+
+  /* 滚动条高度 */
+  background-color: white;
+}
+
+// 定义滑块 内阴影+圆角
+::-webkit-scrollbar-thumb {
+  /* 滚动条的背景颜色 */
+  border-radius: 20px;
+  background-color: #dddee0;
+  box-shadow: inset 0 0 0 white;
+}

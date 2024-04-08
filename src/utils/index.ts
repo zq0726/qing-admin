@@ -1,5 +1,7 @@
 import { unref } from 'vue'
 import { isObject } from './is'
+import { uiConfig } from '@/settings/constant'
+import type { RouteLocationNormalizedLoaded } from 'vue-router'
 
 /**
  * 深层复制
@@ -24,4 +26,19 @@ export const getDynamicProps = <T extends {}, U>(props: T): Partial<U> => {
   })
 
   return ret as Partial<U>
+}
+
+/**
+ * 设置缓存的名字
+ */
+export const getCancleName = (route: RouteLocationNormalizedLoaded): string => {
+  let cancleName = uiConfig.title.replace(/\s+/, '_').toLocaleUpperCase()
+
+  const routeList = route.fullPath.split('/')
+  for (const item of routeList) {
+    if (item) {
+      cancleName += '_' + item.toLocaleUpperCase()
+    }
+  }
+  return cancleName
 }

@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
+    "build:github": "vite build --mode github",
     "preview": "vite preview",
     "test:unit": "vitest",
     "build-only": "vite build",

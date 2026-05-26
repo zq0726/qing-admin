@@ -11,7 +11,7 @@
 
 [husky](https://typicode.github.io/husky/zh/get-started.html) <br>
 [lint-staged](https://www.npmjs.com/package/lint-staged) <br/>
-[commitizen](https://github.com/commitizen/cz-conventional-changelog)
+[commitizen](https://commitlint.js.org/)
 
 ## 代码规范
 

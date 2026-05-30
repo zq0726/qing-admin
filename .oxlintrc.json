@@ -6,5 +6,8 @@
   },
   "categories": {
     "correctness": "error"
+  },
+  "settings": {
+    "ignorePatterns": ["**/.history/**", "**/dist/**", "**/dist-ssr/**", "**/coverage/**"]
   }
 }

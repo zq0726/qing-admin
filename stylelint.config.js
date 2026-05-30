@@ -1,5 +1,11 @@
 /** @type {import('stylelint').Config} */
 export default {
+  overrides: [
+    {
+      files: ['*.vue', '**/*.vue'],
+      customSyntax: 'postcss-html',
+    },
+  ],
   extends: [
     'stylelint-config-standard',
     'stylelint-config-tailwindcss',

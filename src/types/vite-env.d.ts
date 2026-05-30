@@ -1,7 +1,5 @@
-import Ecs20140526, * as $Ecs20140526 from '@alicloud/ecs20140526'
-import OpenApi, * as $OpenApi from '@alicloud/openapi-client'
-import Util, * as $Util from '@alicloud/tea-util'
-import * as $tea from '@alicloud/tea-typescript'
+/// <reference types="vite/client" />
+
 interface ImportMetaEnv {
   readonly VITE_APP_TITLE: string
   readonly VITE_APP_PORT: string

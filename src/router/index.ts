@@ -3,7 +3,7 @@ import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
   history:
-    import.meta.env.MODE === 'git'
+    import.meta.env.MODE === 'github'
       ? createWebHashHistory()
       : createWebHistory(import.meta.env.BASE_URL),
   routes: [

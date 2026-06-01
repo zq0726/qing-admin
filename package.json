@@ -19,9 +19,13 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@unocss/reset": "^66.7.0",
+    "@vueuse/core": "^14.3.0",
     "element-plus": "^2.14.1",
     "pinia": "^3.0.4",
+    "pinia-plugin-persistedstate": "^4.7.1",
     "vue": "^3.5.32",
+    "vue-i18n": "9",
     "vue-router": "^5.0.4"
   },
   "devDependencies": {
@@ -48,6 +52,7 @@
     "npm-run-all2": "^8.0.4",
     "oxlint": "~1.60.0",
     "postcss-html": "^1.8.1",
+    "postcss-scss": "^4.0.9",
     "prettier": "3.8.3",
     "sass": "^1.100.0",
     "stylelint": "^17.12.0",

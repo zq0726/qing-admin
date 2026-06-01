@@ -5,6 +5,10 @@ export default {
       files: ['*.vue', '**/*.vue'],
       customSyntax: 'postcss-html',
     },
+    {
+      files: ['*.scss', '**/*.scss'],
+      customSyntax: 'postcss-scss',
+    },
   ],
   extends: [
     'stylelint-config-standard',
@@ -15,7 +19,7 @@ export default {
     'at-rule-no-unknown': [
       true,
       {
-        ignoreAtRules: ['tailwind', 'layer', 'apply', 'theme', 'extend'],
+        ignoreAtRules: ['tailwind', 'layer', 'apply', 'theme', 'extend', 'forward', 'use'],
       },
     ],
     'declaration-block-no-duplicate-properties': true,

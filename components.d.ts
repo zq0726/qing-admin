@@ -29,16 +29,16 @@ declare module 'vue' {
 
 // For TSX support
 declare global {
-  const ElButton: (typeof import('element-plus/es'))['ElButton']
-  const ElInput: (typeof import('element-plus/es'))['ElInput']
-  const HelloWorld: (typeof import('./src/components/HelloWorld.vue'))['default']
-  const IconCommunity: (typeof import('./src/components/common/icons/IconCommunity.vue'))['default']
-  const IconDocumentation: (typeof import('./src/components/common/icons/IconDocumentation.vue'))['default']
-  const IconEcosystem: (typeof import('./src/components/common/icons/IconEcosystem.vue'))['default']
-  const IconSupport: (typeof import('./src/components/common/icons/IconSupport.vue'))['default']
-  const IconTooling: (typeof import('./src/components/common/icons/IconTooling.vue'))['default']
-  const RouterLink: (typeof import('vue-router'))['RouterLink']
-  const RouterView: (typeof import('vue-router'))['RouterView']
-  const TheWelcome: (typeof import('./src/components/TheWelcome.vue'))['default']
-  const WelcomeItem: (typeof import('./src/components/WelcomeItem.vue'))['default']
+  const ElButton: typeof import('element-plus/es')['ElButton']
+  const ElInput: typeof import('element-plus/es')['ElInput']
+  const HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+  const IconCommunity: typeof import('./src/components/common/icons/IconCommunity.vue')['default']
+  const IconDocumentation: typeof import('./src/components/common/icons/IconDocumentation.vue')['default']
+  const IconEcosystem: typeof import('./src/components/common/icons/IconEcosystem.vue')['default']
+  const IconSupport: typeof import('./src/components/common/icons/IconSupport.vue')['default']
+  const IconTooling: typeof import('./src/components/common/icons/IconTooling.vue')['default']
+  const RouterLink: typeof import('vue-router')['RouterLink']
+  const RouterView: typeof import('vue-router')['RouterView']
+  const TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
+  const WelcomeItem: typeof import('./src/components/WelcomeItem.vue')['default']
 }

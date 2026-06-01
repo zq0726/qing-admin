@@ -38,3 +38,4 @@ __screenshots__/
 # Vite
 *.timestamp-*-*.mjs
 .history
+components.d.ts

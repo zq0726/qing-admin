@@ -6,6 +6,7 @@ import { storeToRefs } from 'pinia'
 import { useConfigStore } from '../stores/config'
 import { useI18n } from 'vue-i18n'
 import type { UiSize } from '../settings'
+import { getCatInfo } from '../api/test'
 
 const config = useConfigStore()
 const { themeColor, themeValue, size, locale } = storeToRefs(config)
@@ -26,6 +27,11 @@ const localeOptions = [
 
 const showMessage = () => {
   ElMessage.success(t('home.message'))
+}
+
+const getCat = async () => {
+  const res = await getCatInfo()
+  console.log(`%c猫信息 :${res.name}`, 'color: red')
 }
 </script>
 
@@ -61,6 +67,9 @@ const showMessage = () => {
       </el-select>
 
       <el-date-picker v-model="dateValue" type="date" style="width: 180px" />
+      <div>
+        <el-button type="primary" @click="getCat">获取猫信息</el-button>
+      </div>
     </div>
     <TheWelcome />
   </main>

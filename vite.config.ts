@@ -36,6 +36,13 @@ export default defineConfig(({ mode }) => {
       host: true,
       port: +env.VITE_APP_PORT,
       open: !!env.VITE_APP_OPEN,
+      proxy: {
+        '/api': {
+          target: env.VITE_API_BASE_URL,
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, ''),
+        },
+      },
     },
   }
 })
